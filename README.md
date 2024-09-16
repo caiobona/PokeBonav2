@@ -1,5 +1,3 @@
-# Teste técnico - Processo Seletivo UDS Tecnologia - Desenvolvedor Fullstack Sênior - (Angular)
-
   `Migração do projeto Pokebona para o Angular 18.`
 
 
