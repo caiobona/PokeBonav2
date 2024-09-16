@@ -1,14 +1,6 @@
 # Teste técnico - Processo Seletivo UDS Tecnologia - Desenvolvedor Fullstack Sênior - (Angular)
 
-  `Projeto feito em angular 18.`
-
-# Tecnologias utilizadas:
-
-# localStorage
-# Tailwindcss(CSS-inline)
-# UI Infragistics
-# Angular Signals
-
+  `Migração do projeto Pokebona para o Angular 18.`
 
 
 # Install
