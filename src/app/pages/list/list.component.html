@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <button class="m-4" igxButton="contained" style="background-color: white" (click)="voltar()">Voltar a Listagem
+  </button>
+
+  @if (listbaralho.length > 0){
+  @for (item of listbaralho; track item) {
+  <div class="flex row mx-8">
+    <igx-expansion-panel>
+      <igx-expansion-panel-header>
+        <igx-expansion-panel-title>
+          {{ item.name}}
+        </igx-expansion-panel-title>
+      </igx-expansion-panel-header>
+      <igx-expansion-panel-body>
+        <div class="card">
+          <div class="card-body">
+            <div class="infos p-1 mb-4 flex justify-between">
+              <p class="text-2xl font-bold mb-2">Cartas Pokémons: {{ total(item.cards) }}</p>
+              <p class="text-2xl font-bold mb-2">Cartas Treinador: {{ filterTreinador(item.cards) }}</p>
+              <p class="text-2xl font-bold mb-2">Tipos de pokémons: {{ tratarTypes(item.cards) }}</p>
+              <button  class=" text-1xl font-bold mb-2 btn btn-danger btn-sm"  (click)="deleteBaralho(item.id)">Delete</button>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-wrap">
+          @for (item of item.cards; track item) {
+            <div class="w-full px-4 flex-1 md:w-2/12 md:flex-none">
+            <app-carta [cartas]="item" ></app-carta>
+            </div>
+          }
+        </div>
+      </igx-expansion-panel-body>
+    </igx-expansion-panel>
+  </div>
+  }
+  }
+  @if (!listbaralho.length){
+    <div class="flex items-center justify-center h-screen" style="color: white">
+
+      <h4>Você não possui Baralho</h4>
+    </div>
+  }
+</div>

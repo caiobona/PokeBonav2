@@ -1,0 +1,86 @@
+@if (spinner()){
+  <div class="container-fluid">
+
+    <div class="flex items-center justify-center h-screen">
+      <igx-circular-bar
+        [value]="100"
+        [animate]="true"
+        class="custom-size"
+      ></igx-circular-bar>
+    </div>
+  </div>
+}
+
+
+<div class="container-fluid" >
+  <button class="m-4" igxButton="contained" style="background-color: white" (click)="voltar()">Voltar a Inicio
+  </button>
+  <div class="container mb-5 mt-5"  >
+    <div class="card">
+      <div class="card-body">
+    <div class="row d-flex">
+      <div class="col-4">
+        <igx-input-group class="">
+          <label igxLabel >Nome do baralho</label>
+          <input igxInput name="baralho" type="text" [(ngModel)]="nameDeck" [ngModelOptions]="{standalone: true}" required />
+        </igx-input-group>
+      </div>
+      <div class="col-4">
+        <igx-input-group class="m2">
+          <label igxLabel >Buscar Carta</label>
+          <input igxInput name="baralho" type="text" (keyup.enter)="getCardByName()" [(ngModel)]="nomeCarta" matInput placeholder="Pressione ENTER" />
+        </igx-input-group >
+      </div>
+
+
+      <div class="col-2 mt-3">
+        <button  class="btn btn-outline-success" igxRipple (click)="createDeck()" >Criar Baralho</button>
+      </div>
+      <div class="col-1">
+        <p class="text-2xl font-bold "> Total:{{ contadorCards()}}</p>
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
+  <div class="row mb-5">
+    @for (item of cartas(); track item) {
+    <div class="col-md-3 col-lg-2 mb-3 mt-5" >
+      <igx-card elevated>
+        <igx-card-media>
+          <img [src]="item.images.small" >
+        </igx-card-media>
+        <div class="btns p-2 flex items-center justify-around" style="background-color: #fcea69;">
+          <button igxIconButton="flat" (click)="addCartas(item)" class="bg-success position-absolute mb-5">
+            <igx-icon fontSet="material">add</igx-icon>
+          </button>
+        </div>
+      </igx-card>
+    </div>
+    }
+    @if (cartas().length < 1){
+      <div class="flex items-center justify-center h-screen">
+
+        <h2>Carta não Encontrada</h2>
+      </div>
+    }
+</div>
+  <div class="row h-10"></div>
+<div class="container mt-5 ">
+  <footer class="fixed-bottom">
+    <div class="card p-1">
+      <div class="card-body">
+        <div class="flex w-full justify-around">
+          <button [disabled]="paginatorOFF()" (click)="onBeforePage()" class="btn btn-primary p-1">
+            Anterior
+          </button>
+          <span class="text-center mt-2">{{ contadorPage }}/18</span> <br>
+          <button [disabled]="paginatorOFF()" (click)="onNextPage()" class="btn btn-primary p-1">
+            Próximo
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</div>
